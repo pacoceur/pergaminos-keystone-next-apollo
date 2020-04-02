@@ -46,7 +46,7 @@ const Index = ({ addToCart, cartState }) => {
   return (
     <Layout cartState={cartState}>
       <div className="flex flex-wrap justify-between">
-        <ProductList addToCart={addToCart} />
+        <ProductList/>
       </div>
     </Layout>
   );
