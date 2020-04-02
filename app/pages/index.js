@@ -7,9 +7,12 @@ import ProductCard from '../components/ProductCard';
 
 const GET_ALL_PRODUCTS = gql`{
   allProducts {
+    id
     name
     price
-    id
+    image {
+      publicUrl
+    }
   }
 }`;
 

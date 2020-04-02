@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { Keystone } = require('@keystonejs/keystone');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const { Text, Checkbox, Password, CloudinaryImage, Integer, Relationship } = require('@keystonejs/fields');
@@ -5,9 +6,10 @@ const { Markdown } = require('@keystonejs/fields-markdown');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { NextApp } = require('@keystonejs/app-next');
-const initialiseData = require('./initial-data');
-
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
+
+const initialiseData = require('./initial-data');
+const { cloudinaryAdapter } = require('./app/utils/cloudinary');
 
 const PROJECT_NAME = "Omsley";
 
@@ -24,7 +26,7 @@ keystone.createList('Product', {
   // access: true,
   fields: {
 	  name: { type: String, required: true },
-	  //image: { type: CloudinaryImage },
+    image: { type: CloudinaryImage, adapter: cloudinaryAdapter },
     basePrice: { type: Integer, required: true, initial: true },
     price: { type: Integer, required: true, initial: true },
 	  description: { type: Markdown, wysiwyg: true, height: 400 },

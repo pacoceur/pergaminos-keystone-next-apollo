@@ -38,9 +38,9 @@ class Application extends App {
   addToCart = (product) => {
     this.setState(
       ({ cartItems }) => {
-        if (!_.find(cartItems, (item) => item._id === product._id)) cartItems.push(product);
+        if (!_.find(cartItems, (item) => item.id === product.id)) cartItems.push(product);
         cartItems = _.map(cartItems, (item) => {
-          if (item._id === product._id) item.qty ? item.qty += 1 : item.qty = 1;
+          if (item.id === product.id) item.qty ? item.qty += 1 : item.qty = 1;
           return item;
         });
         return { cartItems };
@@ -53,7 +53,7 @@ class Application extends App {
     this.setState(
       ({ cartItems }) => {
         cartItems = _.map(cartItems, (item) => {
-          if (item._id === product._id) item.qty -= 1;
+          if (item.id === product.id) item.qty -= 1;
           return item;
         });
         cartItems = _.filter(cartItems, (item) => item.qty >= 1);
