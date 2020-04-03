@@ -15,16 +15,17 @@ module.exports = async keystone => {
     }`
   );
 
+  // Create new user if there's any user
   if (count === 0) {
-    const password = 'temporal';
-    const email = 'norbertcu@gmail.com';
+    const password = 'admin';
+    const email = 'admin@gmail.com';
 
     await keystone.executeQuery(
       `mutation initialUser($password: String, $email: String) {
-            createUser(data: {name: "Admin", email: $email, isAdmin: true, password: $password}) {
-              id
-            }
-          }`,
+        createUser(data: {name: "Admin", email: $email, isAdmin: true, password: $password}) {
+          id
+        }
+      }`,
       {
         variables: {
           password,
@@ -34,11 +35,10 @@ module.exports = async keystone => {
     );
 
     console.log(`
-
-User created:
-  email: ${email}
-  password: ${password}
-Please change these details after initial login.
-`);
-  }
+      User created:
+        email: ${email}
+        password: ${password}
+      Please change these details after initial login.
+    `);
+  } 
 };

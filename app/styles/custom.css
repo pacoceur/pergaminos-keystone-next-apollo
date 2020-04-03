@@ -1,0 +1,18 @@
+body {
+    background: rgb(245, 245, 245)
+}
+
+.navbar-light {
+    background-color: #fff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.multiline {
+    white-space: pre-wrap;
+}
