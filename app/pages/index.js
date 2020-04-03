@@ -31,7 +31,7 @@ export default () => {
 
     return posts.map( post => (
       <li className="list-group-item" key={post.id}>
-        <Link href="/[id].js" as={`/${post.id}`}><a>{post.title}</a></Link>
+        <Link href={`/${post.id}`}><a>{post.title}</a></Link>
       </li>
     ));
   }

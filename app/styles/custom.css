@@ -16,3 +16,12 @@ body {
 .multiline {
     white-space: pre-wrap;
 }
+
+.list-group-item a {
+    color: #3d3d3d;
+}
+
+.list-group-item a:hover {
+    color: #6d6d6d;
+    text-decoration: none;
+}
