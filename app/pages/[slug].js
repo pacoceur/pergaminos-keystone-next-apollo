@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import Link from 'next/link';
 import gql from 'graphql-tag';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
@@ -16,7 +17,7 @@ const GET_POST = gql`
 
 export default () => {
     const router = useRouter();
-    const {slug : id} = router.query
+    const { slug : id } = router.query
 
     const { loading, error, data } = useQuery(GET_POST, { variables: { id } });
 
@@ -39,6 +40,9 @@ export default () => {
     return (
         <Layout>
             <PostElement />
+            <div className="text-center">
+              <Link href="/"><button className="btn btn-small btn-outline-dark mb-5">Regresar</button></Link>
+            </div>
         </Layout>
     );
 };
