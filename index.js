@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Keystone } = require('@keystonejs/keystone');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
