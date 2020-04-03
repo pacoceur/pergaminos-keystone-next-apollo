@@ -19,7 +19,7 @@ export default () => {
     const router = useRouter();
     const {query : id} = router
 
-    const { loading, error, data } = useQuery(GET_POST, { variables: { id } });
+    /*const { loading, error, data } = useQuery(GET_POST, { variables: { id } });
 
     const PostElement = () => {
         if (loading) return 'Loading...';
@@ -30,11 +30,11 @@ export default () => {
         return (
             <p>{Post.content}</p>
         );
-    }
+    }*/
 
     return (
         <Layout>
-            <PostElement />
+            {router.query.id}
         </Layout>
     );
 };
