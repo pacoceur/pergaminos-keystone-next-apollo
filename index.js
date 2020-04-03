@@ -3,12 +3,14 @@ const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { NextApp } = require('@keystonejs/app-next');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
+const initialiseData = require('./initial-data');
 
 // Keystone App
 const PROJECT_NAME = "pergaminos-keystone-next-apollo";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
+  onConnect: initialiseData,
 });
 
 // Lists
