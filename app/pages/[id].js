@@ -17,7 +17,7 @@ const GET_POST = gql`
 
 export default () => {
     const router = useRouter();
-    const id = router.query.id;
+    const {query : id} = router
 
     const { loading, error, data } = useQuery(GET_POST, { variables: { id } });
 
@@ -28,7 +28,7 @@ export default () => {
         const { Post } = data;
 
         return (
-            <p>{Post.slug}</p>
+            <p>{Post.content}</p>
         );
     }
 
