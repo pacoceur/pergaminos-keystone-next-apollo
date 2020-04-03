@@ -1,7 +1,7 @@
 import React from 'react';
-import App from 'next/app';
-import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
 import '../styles/bootstrap.css';
 import '../styles/custom.css';
 
@@ -13,26 +13,14 @@ const client = new ApolloClient({
     },
 });
 
-export default class Application extends App {
-    static async getInitialProps({ Component, ctx }) {
-      let pageProps = {};
-  
-      if (Component.getInitialProps) {
-        pageProps = await Component.getInitialProps(ctx);
-      }
-  
-      return { pageProps };
-    }
-  
-    render() {
-      const { Component, pageProps } = this.props;
-  
-      return (
-        <ApolloProvider client={client}>      
-          <Component 
-            {...pageProps} 
-          />
-        </ApolloProvider>
-      );
-    }
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <ApolloProvider client={client}>      
+      <Component 
+        {...pageProps} 
+      />
+    </ApolloProvider>
+  )
 }
+
+export default MyApp
