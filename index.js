@@ -5,7 +5,7 @@ const { NextApp } = require('@keystonejs/app-next');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 
 // Keystone App
-const PROJECT_NAME = "Keystone Next Apollo Starter";
+const PROJECT_NAME = "pergaminos-keystone-next-apollo";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
