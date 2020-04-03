@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 
 const GET_POST = gql`
-  query Post($Id: ID!) {
-    Post(where: {id: $Id}) {
+  query {
+    Post(where: {id: "5e878d395173ac282490bee5"}) {
       id
       slug
       title
@@ -21,7 +21,9 @@ export default () => {
 
     /*const { loading, error, data } = useQuery(GET_POST, { variables: { id } });
 
-    const PostElement = () => {
+    console.log(data);
+
+    /*const PostElement = () => {
         if (loading) return 'Loading...';
         if (error) return `Error! ${error.message}`;
 

@@ -20,8 +20,12 @@ export default () => {
   const { loading, error, data } = useQuery(GET_POSTS);
 
   const PostList = () => {
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
+    if (loading) return (
+      <li className="list-group-item">Loading...</li>
+    );
+    if (error) return (
+      <li className="list-group-item">`Error! ${error.message}`</li>
+    );
 
     const { allPosts: posts } = data;
 
