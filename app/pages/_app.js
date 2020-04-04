@@ -1,6 +1,6 @@
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import fetch from 'node-fetch';
+import App from 'next/app'
 
 import '../styles/bootstrap.css';
 import '../styles/custom.css';
@@ -11,7 +11,6 @@ const client = new ApolloClient({
       console.log('graphQLError', graphQLError);
       console.log('networkError', networkError);
     },
-    fetch: fetch
 });
 
 const MyApp = ({ Component, pageProps }) => {
@@ -22,6 +21,11 @@ const MyApp = ({ Component, pageProps }) => {
       />
     </ApolloProvider>
   )
+}
+
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);  
+  return { ...appProps }
 }
 
 export default MyApp
