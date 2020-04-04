@@ -5,14 +5,19 @@ const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { NextApp } = require('@keystonejs/app-next');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
-const initialiseData = require('./initial-data');
 
 // Keystone App
 const PROJECT_NAME = "pergaminos-keystone-next-apollo";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
-  onConnect: initialiseData,
+  onConnect: async keystone => {
+    await keystone.createItems({
+      User: [
+        { username: 'admin123', password: 'admin123' },
+      ],
+    });
+  },
 });
 
 // Lists
