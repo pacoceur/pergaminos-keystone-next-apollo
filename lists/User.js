@@ -1,10 +1,8 @@
-const { Text, Checkbox, Password } = require('@keystonejs/fields');
+const { Password, Text } = require('@keystonejs/fields');
 
 module.exports = {
     fields: {
-        name: { type: Text },
-        email: { type: Text, isUnique: true },
-        isAdmin: { type: Checkbox },
+        username: { type: Text },
         password: { type: Password },
     },
 };

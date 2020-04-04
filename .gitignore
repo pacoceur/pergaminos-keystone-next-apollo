@@ -7,3 +7,5 @@ app/.next/
 package-lock.json
 
 .env
+
+dist

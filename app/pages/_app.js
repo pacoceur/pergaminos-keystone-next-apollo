@@ -1,5 +1,3 @@
-import React from 'react';
-import App from 'next/app'
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
@@ -22,12 +20,6 @@ const MyApp = ({ Component, pageProps }) => {
       />
     </ApolloProvider>
   )
-}
-
-MyApp.getInitialProps = async (appContext) => {
-   const appProps = await App.getInitialProps(appContext);
-
-   return { ...appProps }
 }
 
 export default MyApp

@@ -4,6 +4,7 @@ const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { NextApp } = require('@keystonejs/app-next');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
+const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const initialiseData = require('./initial-data');
 
 // Keystone App
@@ -16,16 +17,30 @@ const keystone = new Keystone({
 
 // Lists
 const UserList = require('./lists/User.js');
-const PostList = require('./lists/Post.js');
 keystone.createList('User', UserList);
+
+const PostList = require('./lists/Post.js');
 keystone.createList('Post', PostList);
+
+// User Authentication
+const authStrategy = keystone.createAuthStrategy({
+  type: PasswordAuthStrategy,
+  list: 'User',
+  config: {
+    identityField: 'username',
+    secretField: 'password',
+  },
+});
 
 // Exports
 module.exports = {
   keystone,
   apps: [
     new GraphQLApp(),
-    new AdminUIApp({ enableDefaultRoute: false }),
+    new AdminUIApp({ 
+      enableDefaultRoute: false,
+      authStrategy,
+    }),
     new NextApp({ dir: 'app' }),
   ],
 };
