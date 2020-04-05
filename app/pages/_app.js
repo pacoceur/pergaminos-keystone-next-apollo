@@ -6,7 +6,7 @@ import '../styles/bootstrap.css';
 import '../styles/custom.css';
 
 const client = new ApolloClient({
-    uri: 'http://localhost:3000/admin/api',
+    uri: '/admin/api',
     onError: ({ networkError, graphQLError }) => {
       console.log('graphQLError', graphQLError);
       console.log('networkError', networkError);
