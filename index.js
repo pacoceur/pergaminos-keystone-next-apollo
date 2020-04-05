@@ -41,10 +41,7 @@ keystone.createList('Post', PostList);
 module.exports = {
   keystone,
   apps: [
-    new GraphQLApp({
-      apiPath: '/admin/api',
-      graphiqlPath: '/admin/graphiql',
-    }),
+    new GraphQLApp(),
     new AdminUIApp({ 
       enableDefaultRoute: false,
       // authStrategy,

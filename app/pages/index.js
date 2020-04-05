@@ -20,10 +20,10 @@ export default () => {
 
   const PostList = () => {
     if (loading) return (
-      <li className="list-group-item">Loading...</li>
+      <li className="list-group-item">Cargando...</li>
     );
     if (error) return (
-      <li className="list-group-item">`Error! ${error.message}`</li>
+      <li className="list-group-item">{error.message}</li>
     );
 
     const { allPosts: posts } = data;

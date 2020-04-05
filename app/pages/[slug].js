@@ -25,10 +25,10 @@ export default () => {
 
     const PostElement = () => {
         if (loading) return (
-          <li className="my-5">Cargando...</li>
+          <p className="my-5">Cargando...</p>
         );
         if (error) return (
-          <li className="my-5">{error.message}</li>
+          <p className="my-5">{error.message}</p>
         );
 
         const { Post } = data;
