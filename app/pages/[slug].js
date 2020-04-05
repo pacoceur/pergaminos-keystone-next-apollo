@@ -25,7 +25,7 @@ export default () => {
 
     const PostElement = () => {
         if (loading) return (
-          <p className="my-5">Cargando...</p>
+          <p className="my-5 text-center">Cargando...</p>
         );
         if (error) return (
           <p className="my-5">{error.message}</p>
