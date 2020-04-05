@@ -11,13 +11,13 @@ const PROJECT_NAME = "pergaminos-keystone-next-apollo";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
-  onConnect: async keystone => {
+  /*onConnect: async keystone => {
     await keystone.createItems({
       User: [
         { username: 'admin123', password: 'admin123' },
       ],
     });
-  },
+  },*/
 });
 
 // Lists
@@ -28,14 +28,14 @@ const PostList = require('./lists/Post.js');
 keystone.createList('Post', PostList);
 
 // User Authentication
-const authStrategy = keystone.createAuthStrategy({
+/*const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: 'User',
   config: {
     identityField: 'username',
     secretField: 'password',
   },
-});
+});*/
 
 // Exports
 module.exports = {
@@ -44,7 +44,7 @@ module.exports = {
     new GraphQLApp(),
     new AdminUIApp({ 
       enableDefaultRoute: false,
-      authStrategy,
+      // authStrategy,
     }),
     new NextApp({ dir: 'app' }),
   ],
