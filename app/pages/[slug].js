@@ -24,8 +24,12 @@ export default () => {
     console.log(data);
 
     const PostElement = () => {
-        if (loading) return 'Loading...';
-        if (error) return `Error! ${error.message}`;
+        if (loading) return (
+          <li className="my-5">Cargando...</li>
+        );
+        if (error) return (
+          <li className="my-5">{error.message}</li>
+        );
 
         const { Post } = data;
 
